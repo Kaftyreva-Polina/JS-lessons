@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      let a = {
+        name: 'it-kamasutra',
+        protocol: 'https',
+        maxStudentCount: 10,
+        isOnline: true,
+        students: ['ivan', 'andrey', 'farid'],
+        classroom: {
+          teacher: {
+            name: 'wew',
+            age: 18
+          }
+        }
+      }
+    // var b = {...a};
+    // b.classroom.teacher.name = 'Dima';
+    //   console.log(a.classroom.teacher.name)
+
+      var b = {...a};
+      b.classroom = {...a.classroom};
+      b.classroom.teacher = {...a.classroom.teacher};
+      b.students = [...a.students];
+
+      b.classroom.teacher.name = "Dima"
+      console.log(b.classroom.teacher.name)
+      console.log(a.classroom.teacher.name)
+
+
+      // let b = {...a, classroom: {...a.classroom, teacher: {...a.teacher, name: "Dima"}}}
+      // console.log(b)
+
+    </script>
+</body>
+</html>

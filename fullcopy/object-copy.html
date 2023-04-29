@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //immutable.js
+
+    //чистая функция - функция имеет право работать только с параметром, обязана что-то вернуть
+    //не несет побочного эффекта, что пришло в параметр, с тем и работает
+
+    function sdf(state) {
+        a++;
+        return 23;
+    }
+
+    let a = {
+        name: '2323',
+        age: 12
+    }
+
+    let b = {...a}
+    b.name = '2222'
+    //свойства являются примитивами
+
+    let state = {
+        name: 'it-kamasutra.com',
+        age: 1,
+        school: {
+            students: [{}, {}, {}],
+            address: 'Minsk',
+            director: {
+                name: 'Andrey'
+            }
+        }
+    }
+
+    let c = {...state, school: {...state.school, address: 'Moscow'}}
+    let d = {...state, school: {...state.school, director: {...state.school.director, name: 'Dima'}}}
+    console.log(c.school.address)
+    console.log(d.school.director.name)
+
+    let e = {
+        ...state,
+        school: {
+            ...state.school,
+            students: state.school.students.map(el => ({...el})),
+            address: {...state.school.address},
+            director: {...state.school.director}
+        }
+    }
+
+    let massive = [1, 2, 3, 4, 5, 6];
+    let copyMassive = [...massive, 7];
+
+    let massive2 = [{name: 'D', a: {}}, {name: 'C'}];
+
+    let copyMassive2 = massive2.map(el => {
+        return {...el, a: {...el.a}}
+    });
+
+    //новый массив с копиями объектов
+
+    b[0].name
+
+    function reducer(state, action) {
+        let stateCopy = makeCopy(state)
+        stateCopy.age = action.newAge
+
+        return stateCopy
+    }
+
+    //var str = JSON.stringify(state) - стерелизация, превращение в строку
+    // JSON.parse(str) -возродит как новый объект
+
+
+</script>
+</body>
+</html>
