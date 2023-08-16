@@ -50,7 +50,7 @@ const students = [
         friends: [
             {name: "Олег"},
             {name: "Петр"},
-    ]},
+        ]},
 ]
 
 // students[0] => ссылка #234
